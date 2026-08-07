@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="80" fill="#dce1ff"/>
+  <circle cx="200" cy="140" r="80" fill="#fff" stroke="#00236f" stroke-width="12"/>
+  <path d="M110 320c0-55 45-100 100-100s100 45 100 100" fill="#fff" stroke="#00236f" stroke-width="12"/>
+  <text x="50%" y="90%" dominant-baseline="middle" text-anchor="middle" fill="#4059aa" font-family="Inter, sans-serif" font-size="24">Student Avatar</text>
+</svg>
