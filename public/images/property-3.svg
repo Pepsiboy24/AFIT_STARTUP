@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <rect width="1280" height="720" rx="32" fill="#dce9ff"/>
+  <rect x="120" y="120" width="1040" height="480" rx="24" fill="#ffffff" stroke="#0d0097" stroke-width="8"/>
+  <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="#0d0097" font-family="Inter, sans-serif" font-size="64">Property Image</text>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#00236f" font-family="Inter, sans-serif" font-size="32">Harbor Halls</text>
+</svg>

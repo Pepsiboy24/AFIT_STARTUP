@@ -1,0 +1,11 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/dashboard/page": "/dashboard",
+  "/landlord/page": "/landlord",
+  "/login/page": "/login",
+  "/page": "/",
+  "/properties/[id]/page": "/properties/[id]",
+  "/search/page": "/search",
+  "/signup/page": "/signup"
+}
