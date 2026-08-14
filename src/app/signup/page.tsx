@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Button from '@/components/Button';
 import InputField from '@/components/InputField';
@@ -11,7 +12,22 @@ const userTypes = [
 ];
 
 export default function SignupPage() {
+  const router = useRouter();
   const [selectedType, setSelectedType] = useState<'student' | 'landlord'>('student');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      if (selectedType === 'landlord') {
+        router.push('/landlord');
+      } else {
+        router.push('/dashboard');
+      }
+    }, 400);
+  };
 
   return (
     <main className="min-h-screen bg-background text-on-background flex items-center justify-center px-margin-mobile py-stack-lg">
@@ -60,7 +76,7 @@ export default function SignupPage() {
                 })}
               </div>
             </div>
-            <form className="mt-stack-lg space-y-stack-md" onSubmit={(event) => event.preventDefault()}>
+            <form className="mt-stack-lg space-y-stack-md" onSubmit={handleSubmit}>
               {selectedType === 'student' ? (
                 <>
                   <InputField label="Full Name" icon="person" placeholder="John Doe" />
@@ -74,7 +90,7 @@ export default function SignupPage() {
               )}
               <InputField label="Create Password" icon="lock" placeholder="••••••••" type="password" />
               <div className="flex items-start gap-3">
-                <input id="terms" type="checkbox" className="mt-1 h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary" />
+                <input id="terms" type="checkbox" defaultChecked className="mt-1 h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary" />
                 <label htmlFor="terms" className="text-body-sm text-on-surface-variant">
                   I agree to the{' '}
                   <a href="javascript:void(0)" className="text-primary underline-offset-2 underline">
@@ -87,8 +103,8 @@ export default function SignupPage() {
                   .
                 </label>
               </div>
-              <Button type="submit" className="w-full">
-                Create Account
+              <Button type="submit" disabled={isSubmitting} className="w-full">
+                {isSubmitting ? 'Creating Account...' : 'Create Account'}
               </Button>
             </form>
             <p className="mt-stack-lg text-center text-body-sm text-on-surface-variant">
