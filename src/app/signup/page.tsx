@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Button from '@/components/Button';
+import { useActionState } from 'react';
 import InputField from '@/components/InputField';
+import SubmitButton from '@/components/SubmitButton';
+import { signup, type AuthActionState } from '@/app/actions/auth';
 
 const userTypes = [
   { id: 'student', label: 'I am a Student', icon: 'person_outline' },
@@ -12,6 +14,10 @@ const userTypes = [
 
 export default function SignupPage() {
   const [selectedType, setSelectedType] = useState<'student' | 'landlord'>('student');
+  const [state, formAction] = useActionState<AuthActionState, FormData>(
+    (_prevState, formData) => signup(formData),
+    undefined,
+  );
 
   return (
     <main className="min-h-screen bg-background text-on-background flex items-center justify-center px-margin-mobile py-stack-lg">
@@ -60,19 +66,30 @@ export default function SignupPage() {
                 })}
               </div>
             </div>
-            <form className="mt-stack-lg space-y-stack-md" onSubmit={(event) => event.preventDefault()}>
+            <form action={formAction} className="mt-stack-lg space-y-stack-md">
+              <input type="hidden" name="role" value={selectedType} />
+              {state?.error ? (
+                <p role="alert" className="rounded-xl bg-error-container px-4 py-3 text-body-sm font-medium text-on-error-container">
+                  {state.error}
+                </p>
+              ) : null}
+              {state?.success ? (
+                <p role="status" className="rounded-xl bg-secondary-container px-4 py-3 text-body-sm font-medium text-on-secondary-container">
+                  {state.success}
+                </p>
+              ) : null}
               {selectedType === 'student' ? (
                 <>
-                  <InputField label="Full Name" icon="person" placeholder="John Doe" />
-                  <InputField label="University Email" icon="mail" placeholder="name@university.edu" type="email" helpText="Verify your student status with an .edu address" />
+                  <InputField label="Full Name" name="fullName" icon="person" placeholder="John Doe" required />
+                  <InputField label="University Email" name="email" icon="mail" placeholder="name@university.edu" type="email" helpText="Verify your student status with an .edu address" required />
                 </>
               ) : (
                 <>
-                  <InputField label="Full Name or Company" icon="business" placeholder="Acme Rentals" />
-                  <InputField label="Business Email" icon="alternate_email" placeholder="contact@acmerentals.com" type="email" />
+                  <InputField label="Full Name or Company" name="fullName" icon="business" placeholder="Acme Rentals" required />
+                  <InputField label="Business Email" name="email" icon="alternate_email" placeholder="contact@acmerentals.com" type="email" required />
                 </>
               )}
-              <InputField label="Create Password" icon="lock" placeholder="••••••••" type="password" />
+              <InputField label="Create Password" name="password" icon="lock" placeholder="••••••••" type="password" required />
               <div className="flex items-start gap-3">
                 <input id="terms" type="checkbox" className="mt-1 h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary" />
                 <label htmlFor="terms" className="text-body-sm text-on-surface-variant">
@@ -87,9 +104,7 @@ export default function SignupPage() {
                   .
                 </label>
               </div>
-              <Button type="submit" className="w-full">
-                Create Account
-              </Button>
+              <SubmitButton className="w-full">Create Account</SubmitButton>
             </form>
             <p className="mt-stack-lg text-center text-body-sm text-on-surface-variant">
               Already have an account?{' '}

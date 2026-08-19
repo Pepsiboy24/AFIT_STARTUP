@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Property } from '@/types/property';
 import { getPropertyById } from '@/lib/data/properties';
@@ -17,6 +18,9 @@ export default function PropertyPage({ params }: PropertyPageProps) {
   return (
     <div className="min-h-screen bg-background text-on-background">
       <main className="mx-auto max-w-container-max px-margin-mobile py-stack-lg md:px-margin-desktop">
+        <Link href="/search" className="mb-6 inline-flex items-center gap-1 text-body-sm font-medium text-primary hover:underline">
+          <span className="material-symbols-outlined text-base">arrow_back</span> Back to search
+        </Link>
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
           <section className="space-y-5">
             <div className="rounded-[1.5rem] overflow-hidden shadow-soft border border-outline-variant">
@@ -76,7 +80,7 @@ export default function PropertyPage({ params }: PropertyPageProps) {
                   <p className="text-body-md text-on-surface">{property.nearCampus}</p>
                 </div>
               </div>
-              <Button className="mt-6 w-full">Book Viewing</Button>
+              <Button className="mt-6 w-full">Book this room</Button>
             </div>
           </aside>
         </div>

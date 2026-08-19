@@ -1,0 +1,51 @@
+{
+  "node": {
+    "0081bee63e18e3362dac09f38940f1e04d254d246e": {
+      "workers": {
+        "app/landlord/page": {
+          "moduleId": "[project]/.next-internal/server/app/landlord/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions/property.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getLandlordProperties",
+          "filename": "src/app/actions/property.ts"
+        }
+      },
+      "layer": {
+        "app/landlord/page": "action-browser"
+      },
+      "filename": "src/app/actions/property.ts",
+      "exportedName": "getLandlordProperties"
+    },
+    "4048b3e7a661a9aac869735a3783f5e3f318e3e6bb": {
+      "workers": {
+        "app/landlord/page": {
+          "moduleId": "[project]/.next-internal/server/app/landlord/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions/property.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createProperty",
+          "filename": "src/app/actions/property.ts"
+        }
+      },
+      "layer": {
+        "app/landlord/page": "action-browser"
+      },
+      "filename": "src/app/actions/property.ts",
+      "exportedName": "createProperty"
+    },
+    "40fc8ec501f7f043edf8444f53eafec7358a78e175": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions/auth.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "login",
+          "filename": "src/app/actions/auth.ts"
+        }
+      },
+      "layer": {
+        "app/login/page": "action-browser"
+      },
+      "filename": "src/app/actions/auth.ts",
+      "exportedName": "login"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "BIa/mGGmk1U/zwMqORrvPTyBuCa9ol84jl4PP+W5BpE="
+}
